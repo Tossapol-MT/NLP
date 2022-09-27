@@ -9,3 +9,7 @@ body {
     max-height: fit-content;
     margin: 0 auto;
 }
+
+.bg {
+    background-color: aqua;
+}
