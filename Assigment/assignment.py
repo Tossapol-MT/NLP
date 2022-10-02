@@ -74,8 +74,8 @@ def compare():
     if request.method == 'POST':
         
         articles = []
-        for i in range(10) :
-            f = open(f"wiki_article_{i}.txt", "r")
+        for i in (os.listdir(os.path.join(os.path.abspath(os.path.dirname(__file__)), "files"))) :
+            f = open(".\\files\\"+ i, "r")
             article = f.read()
             tokens = word_tokenize(article)
             lower_tokens = [t.lower() for t in tokens]
@@ -123,6 +123,10 @@ def spa_sub():
 @app.route('/spac')
 def spac():
     return render_template('spa.html')
+
+@app.route('/fakenews')
+def fakenews():
+    return render_template('fakenews.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
