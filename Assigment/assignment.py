@@ -17,6 +17,7 @@ from nltk.stem import WordNetLemmatizer
 from gensim.models.tfidfmodel import TfidfModel
 from flask import Flask,render_template,request
 import Spacy 
+import fakenews as fake
 
 app = Flask(__name__, template_folder='template')
 Markdown(app)
@@ -123,6 +124,13 @@ def spa_sub():
 @app.route('/spac')
 def spac():
     return render_template('spa.html')
+
+@app.route('/fakenews', methods = ['POST'])
+def get_prediction():
+    if request.method == 'POST':
+        fakenews = request.form.get('fake-news')
+        display = fake.get_prediction(fakenews, convert_to_label=True)
+    return render_template('fakenews.html', display=display)
 
 @app.route('/fakenews')
 def fakenews():
