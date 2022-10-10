@@ -25,11 +25,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/fakenews">FakeNews</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sentiment">Sentiment</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div>
+        <h2>
+            &nbsp;
+            <center>Spacy</center>
+        </h2>
         <center>
             <form action="/spa_sub" method="post" enctype="multipart/form-data">
                 <div class="form-floating">
@@ -39,7 +46,7 @@
                 <br><br>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>
-            {% if display %}
+            <br> {% if display %}
             <p>{{display|markdown}}</p>
             {% endif %}
         </center>

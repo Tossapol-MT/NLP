@@ -18,6 +18,7 @@ from gensim.models.tfidfmodel import TfidfModel
 from flask import Flask,render_template,request
 import Spacy 
 import fakenews as fake
+import sentiment as stm
 
 app = Flask(__name__, template_folder='template')
 Markdown(app)
@@ -136,6 +137,16 @@ def get_prediction():
 def fakenews():
     return render_template('fakenews.html')
 
+@app.route('/sentiment', methods = ['POST'])
+def sentiment_check():
+    if request.method == 'POST':
+        sentiment = request.form.get('sentiment')
+        display = stm.sentiment_check(sentiment)
+    return render_template('sentiment.html', display=display)
+
+@app.route('/sentiment')
+def sentiment():
+    return render_template('sentiment.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
-
