@@ -38,6 +38,17 @@
             <center>Sentiment</center>
         </h2>
         <center>
+            <div>
+                <center>
+                    &nbsp;
+                    <form action="/sentiment-upload" method="post" enctype="multipart/form-data">
+                        <label for="upload "> Upload Your Flie :</label>
+                        <input type="file" name="stm_upload">
+                        <input type="submit" value="upload">
+                        <br><br>
+                    </form>
+                </center>
+            </div>
             <form action="/sentiment" method="post" enctype="multipart/form-data">
                 <div class="form-floating">
                     <textarea class="form-control" name="sentiment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>

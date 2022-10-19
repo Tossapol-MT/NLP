@@ -43,7 +43,7 @@
                 &nbsp;
                 <form action="/upload" method="post" enctype="multipart/form-data">
                     <label for="upload "> Upload Your Flie :</label>
-                    <input type="file" multiple id="upload" name="upload[]"><br><br>
+                    <input type="file" multiple id="upload" name="upload[]">
                     <input type="submit" value="upload">
                     <br><br>
                 </form>
@@ -55,7 +55,7 @@
             <center>
                 <form action="/search" method="post" enctype="multipart/form-data">
                     <label for="search "> Search Word :</label>
-                    <input type="text" multiple id="search" name="search"><br><br>
+                    <input type="text" multiple id="search" name="search">&nbsp;&nbsp;&nbsp;
                     <input type="submit" value="search">
                 </form>
                 {{found}}
@@ -66,13 +66,25 @@
             <center>
                 <form action="/compare" method="post" enctype="multipart/form-data">
                     <label for="search "> Compare Between BOW VS TF_IDF : TOP 5 </label><br><br>
+                    <table style="border: 1px solid black; width:50%; ">
+                        {%if bow%}
+                        <tr>
+                            <td style="border: 1px solid black;  text-align:center">Bag of words</td>
+                            <td style=" border: 1px solid black; text-align:center ">TF_IDF</td>
+                        </tr>
+                        
+                        {% for i in range(0,5) %}
+                        <tr>
+                            <td style="border: 1px solid black;  text-align:center">{{bow[i]}}</td>
+                            <td style="border: 1px solid black;  text-align:center">{{idf[i]}}</td>
+                            {% endfor %}</tr>
+                            {%endif%}
+                        </table><br>
                     <input type="submit" value="compare">
                 </form>
-                <br><br> {{bow}}
-                <br><br>{{idf}}
             </center>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM " crossorigin="anonymous "></script>
     </div>
 </body>
 

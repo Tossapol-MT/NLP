@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/style.css">
     <title>Spacy</title>
 </head>
@@ -36,22 +37,46 @@
         <h2>
             &nbsp;
             <center>Spacy</center>
+            <br>
         </h2>
-        <center>
-            <form action="/spa_sub" method="post" enctype="multipart/form-data">
-                <div class="form-floating">
-                    <textarea class="form-control" name="spa_sub" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+
+        <form action="/spa_sub" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-8">
+                    <textarea class="form-control" name="spa_sub" placeholder="Pls. Paste your text Here!!"
+                        id="floatingTextarea2" style="height: 200px"></textarea>
                     <label for="floatingTextarea2"></label>
                 </div>
-                <br><br>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
-            <br> {% if display %}
-            <p>{{display|markdown}}</p>
-            {% endif %}
-        </center>
+                <div class="col-4">
+                    <select class="form-select" name="select" aria-label="Default select example" multiple style="height: 200px">
+                        <option value="all" selected>SELECT ALL</option>
+                        <option value="person">PERSON</option>
+                        <option value="org">ORG</option>
+                        <option value="gpe">GPE</option>
+                        <option value="norp">NORP</option>
+                        <option value="date">DATE</option>
+                        <option value="time">TIME</option>
+                        <option value="language">LANGUAGE</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+            <center>
+            <button type="submit" class="btn btn-success">Submit</button>
+            </center>
+        </form>
+        <div class="row">
+            <div class="col-12">
+                <br> {% if display %}
+                <p>{{display|markdown}}</p>
+                {% endif %}
+            </div>
+        </div>
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

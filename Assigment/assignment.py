@@ -20,11 +20,15 @@ import Spacy
 import fakenews as fake
 import sentiment as stm
 
+
 app = Flask(__name__, template_folder='template')
 Markdown(app)
 import os
 app.config["UPLOAD_FOLDER"] = "files"
 parth = os.getcwd() + "/files"
+parth_stm = os.getcwd() + "/sentiment"
+parth_fake = os.getcwd() + "/fakenews"
+
 
 @app.route('/')
 def first_page():
@@ -119,12 +123,25 @@ def compare():
 def spa_sub():
     if request.method == 'POST':
         spac = request.form.get('spa_sub')
-        display = Spacy.spa(spac)
+        select = request.form.getlist('select')
+        display = Spacy.spa(spac,select)
     return render_template('spa.html', display=display)
 
 @app.route('/spac')
 def spac():
     return render_template('spa.html')
+
+@app.route('/fake-upload', methods = ['POST'])   
+def fakenews_upload():
+    f = request.files.get('fake_upload')
+    dir = os.path.join(parth_fake,f.filename)
+    f.save(dir)
+    
+    file = open(dir,"r")
+    fake_n = file.read()
+    display = fake.get_prediction(fake_n)
+            
+    return render_template("fakenews.html", display=display)
 
 @app.route('/fakenews', methods = ['POST'])
 def get_prediction():
@@ -136,6 +153,19 @@ def get_prediction():
 @app.route('/fakenews')
 def fakenews():
     return render_template('fakenews.html')
+
+@app.route('/sentiment-upload', methods = ['POST'])   
+def sentiment_upload():
+    f = request.files.get('stm_upload')
+    dir = os.path.join(parth_stm,f.filename)
+    f.save(dir)
+    
+    file = open(dir,"r")
+    stment = file.read()
+    display = stm.sentiment_check(stment)
+            
+    return render_template("sentiment.html", display=display)
+
 
 @app.route('/sentiment', methods = ['POST'])
 def sentiment_check():
