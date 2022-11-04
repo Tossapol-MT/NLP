@@ -31,7 +31,7 @@ def theTime():
     print(time)
     hour = time[11:13]
     min = time[14:16]
-    return ("The time right now is " + hour + "Hours and " + min + " Minutes")
+    return ("The time right now is " + hour + "Hours and " + min + " Minutes")   
 
 def respond(message):
     bot_message = ''
