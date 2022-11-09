@@ -139,7 +139,7 @@ def fakenews_upload():
     
     file = open(dir,"r")
     fake_n = file.read()
-    display = fake.get_prediction(fake_n)
+    display = fake.get_prediction(fake_n, convert_to_label=True)
             
     return render_template("fakenews.html", display=display)
 

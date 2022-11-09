@@ -18,8 +18,8 @@ def get_prediction(text, convert_to_label=False):
     probs = outputs[0].softmax(1)
     # executing argmax function to get the candidate label
     d = {
-        0: "reliable",
-        1: "fake"
+        0: "Reliable",
+        1: "Fake"
     }
     if convert_to_label:
         return d[int(probs.argmax())]
