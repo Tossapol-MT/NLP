@@ -19,6 +19,9 @@ from flask import Flask,render_template,request
 import Spacy 
 import fakenews as fake
 import sentiment as stm
+from chatbot_train_test import chatbot_test as chatbot_predict
+# import chatbot_train_test.chatbot_test as chatbot_predict
+import assistant
 
 
 app = Flask(__name__, template_folder='template')
@@ -177,6 +180,27 @@ def sentiment_check():
 @app.route('/sentiment')
 def sentiment():
     return render_template('sentiment.html')
+
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
+
+
+@app.route('/predict-chatbot', methods=['POST'])
+def chatbot_pre():
+    text = request.form.get("text")
+    return chatbot_predict.chat(text)
+
+
+@app.route('/get-mricro-phone', methods=['POST'])
+def mricro():
+    return assistant.input()
+
+
+@app.route('/open-voice', methods=['POST'])
+def open_voice():
+    text = request.form.get("text")
+    return assistant.assistant(text)
 
 if __name__ == '__main__':
     app.run(debug=True)

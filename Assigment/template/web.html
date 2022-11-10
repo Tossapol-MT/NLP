@@ -46,7 +46,7 @@
         <div>
             <center>
                 <form action="/compare" method="post" enctype="multipart/form-data">
-                    <label for="search "> Compare Between BOW VS TF_IDF : TOP 5 </label><br><br>
+                    <label for="search "> Compare Between BoW VS TF_IDF : TOP 5 </label><br><br>
                     <table style="border: 1px solid black; width:50%; ">
                         {%if bow%}
                         <tr>
@@ -58,7 +58,7 @@
                         <tr>
                             <td style="border: 1px solid black;  text-align:center">{{bow[i]}}</td>
                             <td style="border: 1px solid black;  text-align:center">{{idf[i]}}</td>
-                            {% endfor %}
+                        {% endfor %}
                         </tr>
                         {%endif%}
                     </table><br>
