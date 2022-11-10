@@ -12,27 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand">FSFU</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../ ">TF-IDF</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/spac">Spacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/fakenews">FakeNews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sentiment">Sentiment</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% include 'navbar.html' %}
     <div class="container">
         <h2>
             &nbsp;
@@ -48,7 +28,8 @@
                     <label for="floatingTextarea2"></label>
                 </div>
                 <div class="col-4">
-                    <select class="form-select" name="select" aria-label="Default select example" multiple style="height: 200px">
+                    <select class="form-select" name="select" aria-label="Default select example" multiple
+                        style="height: 200px">
                         <option value="all" selected>SELECT ALL</option>
                         <option value="person">PERSON</option>
                         <option value="org">ORG</option>
@@ -62,7 +43,7 @@
                 </div>
             </div>
             <center>
-            <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </center>
         </form>
         <div class="row">
